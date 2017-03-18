@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ToyChat</string>
+    <string name="initMsg">No History</string>
+    <string name="inputHint">Type a message</string>
 </resources>

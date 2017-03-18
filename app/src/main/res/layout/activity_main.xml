@@ -12,6 +12,7 @@
     tools:context="com.example.nisan.toychat.MainActivity">
 
     <ScrollView
+        android:id="@+id/outputScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">

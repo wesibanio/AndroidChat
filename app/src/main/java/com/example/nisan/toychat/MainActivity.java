@@ -10,6 +10,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private TextView outputText;
     private EditText inputText;
+    private ScrollView outputScroll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
 
         outputText = (TextView) findViewById(R.id.outputText);
         inputText = (EditText) findViewById(R.id.inputText);
+        outputScroll = (ScrollView)findViewById(R.id.outputScroll);
         Button sendButton = (Button) findViewById(R.id.sendButton);
 
         if (savedInstanceState != null) {
             this.outputText.setText(savedInstanceState.getString(
                     String.valueOf(R.id.outputText)
             ));
+            this.outputScroll.scrollTo(0, this.outputScroll.getBottom());
         }
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 
+        this.outputScroll.smoothScrollTo(0, this.outputScroll.getBottom());
         this.inputText.setText("");
     }
 
